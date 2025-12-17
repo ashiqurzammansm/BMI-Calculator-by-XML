@@ -3,8 +3,8 @@ package com.example.bmicalculator
 object BmiUtils {
 
     fun calculateBMI(weight: Int, heightCm: Int): Double {
-        val heightMeter = heightCm / 100.0
-        return weight / (heightMeter * heightMeter)
+        val heightM = heightCm / 100.0
+        return weight / (heightM * heightM)
     }
 
     fun getCategory(bmi: Double): String {
@@ -18,19 +18,31 @@ object BmiUtils {
 
     fun getCategoryColor(category: String): Int {
         return when (category) {
-            "NORMAL" -> 0xFF00E676.toInt()     // Green
-            "UNDERWEIGHT" -> 0xFFFFD600.toInt() // Yellow
-            "OVERWEIGHT" -> 0xFFFF9100.toInt()  // Orange
-            else -> 0xFFFF1744.toInt()          // Red
+            "UNDERWEIGHT" -> 0xFFFFC107.toInt() // Yellow
+            "NORMAL" -> 0xFF4CAF50.toInt()      // Green
+            "OVERWEIGHT" -> 0xFFFF9800.toInt()  // Orange
+            else -> 0xFFF44336.toInt()          // Red
         }
     }
 
-    fun getDescription(category: String): String {
+    fun getDescription(category: String, gender: String): String {
         return when (category) {
-            "NORMAL" -> "You have a normal body weight. Good job!"
-            "UNDERWEIGHT" -> "You are underweight. Try to eat nutritious food."
-            "OVERWEIGHT" -> "You are slightly overweight. Exercise is recommended."
-            else -> "You are obese. Please consult a doctor."
+            "UNDERWEIGHT" ->
+                "You are underweight. Consider nutritious meals." +
+                        if (gender == "FEMALE") " Focus on iron & calcium." else ""
+            "NORMAL" ->
+                "You have a healthy body weight. Keep it up!"
+            "OVERWEIGHT" ->
+                "You are slightly overweight. Regular exercise is recommended."
+            else ->
+                "You are obese. Please consult a healthcare professional."
         }
+    }
+
+    fun idealWeightRange(heightCm: Int): String {
+        val h = heightCm / 100.0
+        val min = 18.5 * h * h
+        val max = 24.9 * h * h
+        return "${min.toInt()}kg – ${max.toInt()}kg"
     }
 }

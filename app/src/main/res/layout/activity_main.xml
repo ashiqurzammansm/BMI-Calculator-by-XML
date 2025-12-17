@@ -10,12 +10,12 @@
     <!-- Title -->
     <TextView
         android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="BMI calculator"
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -33,20 +33,19 @@
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/cardMale"
-        app:layout_constraintHorizontalWeight="1"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp">
 
         <TextView
-            android:text="♀"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="♀"
             android:textSize="32sp"
             android:textColor="@android:color/white"/>
 
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="FEMALE"
             android:textColor="@android:color/white"
             android:textStyle="bold"/>
@@ -65,19 +64,18 @@
         app:layout_constraintTop_toTopOf="@id/cardFemale"
         app:layout_constraintStart_toEndOf="@id/cardFemale"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontalWeight="1"
         android:layout_marginStart="8dp">
 
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="♂"
             android:textSize="32sp"
             android:textColor="@android:color/white"/>
 
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="MALE"
             android:textColor="@android:color/white"
             android:textStyle="bold"/>
@@ -98,15 +96,15 @@
         android:layout_marginTop="20dp">
 
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="HEIGHT (cm)"
             android:textColor="@android:color/white"/>
 
         <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
             android:id="@+id/tvHeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="170"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -132,28 +130,27 @@
         app:layout_constraintTop_toBottomOf="@id/cardHeight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/cardAge"
-        app:layout_constraintHorizontalWeight="1"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp">
 
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="WEIGHT"
             android:textColor="@android:color/white"/>
 
         <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
             android:id="@+id/tvWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="60"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"/>
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="12dp">
 
@@ -163,6 +160,7 @@
                 android:layout_height="44dp"
                 android:background="@drawable/circle_button_ripple"
                 android:src="@drawable/ic_minus"
+                android:scaleType="centerInside"
                 android:contentDescription="Decrease weight"/>
 
             <ImageButton
@@ -172,6 +170,7 @@
                 android:layout_marginStart="16dp"
                 android:background="@drawable/circle_button_ripple"
                 android:src="@drawable/ic_plus"
+                android:scaleType="centerInside"
                 android:contentDescription="Increase weight"/>
         </LinearLayout>
     </LinearLayout>
@@ -188,27 +187,26 @@
         app:layout_constraintTop_toTopOf="@id/cardWeight"
         app:layout_constraintStart_toEndOf="@id/cardWeight"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontalWeight="1"
         android:layout_marginStart="8dp">
 
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="AGE"
             android:textColor="@android:color/white"/>
 
         <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
             android:id="@+id/tvAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="25"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"/>
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="12dp">
 
@@ -218,6 +216,7 @@
                 android:layout_height="44dp"
                 android:background="@drawable/circle_button_ripple"
                 android:src="@drawable/ic_minus"
+                android:scaleType="centerInside"
                 android:contentDescription="Decrease age"/>
 
             <ImageButton
@@ -227,11 +226,12 @@
                 android:layout_marginStart="16dp"
                 android:background="@drawable/circle_button_ripple"
                 android:src="@drawable/ic_plus"
+                android:scaleType="centerInside"
                 android:contentDescription="Increase age"/>
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Calculate -->
+    <!-- Calculate Button -->
     <Button
         android:id="@+id/btnCalculate"
         android:layout_width="0dp"

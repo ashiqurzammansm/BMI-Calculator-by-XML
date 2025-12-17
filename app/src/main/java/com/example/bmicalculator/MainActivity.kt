@@ -1,7 +1,7 @@
 package com.example.bmicalculator
 
-import android.animation.ObjectAnimator
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +10,9 @@ import com.example.bmicalculator.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var prefs: SharedPreferences
 
+    private var gender = "MALE"
     private var height = 170
     private var weight = 60
     private var age = 25
@@ -20,47 +22,51 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        updateMinusState()
+        prefs = getSharedPreferences("BMI_PREF", MODE_PRIVATE)
 
-        // Height slider
+        // Default gender
+        selectMale()
+
+        // Gender selection
+        binding.cardMale.setOnClickListener { selectMale() }
+        binding.cardFemale.setOnClickListener { selectFemale() }
+
+        // Height
         binding.seekHeight.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
-
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                height = if (progress < 50) 50 else progress
-                animateText(binding.tvHeight, height)
+            override fun onProgressChanged(sb: SeekBar?, p: Int, f: Boolean) {
+                height = p.coerceIn(80, 220)
+                binding.tvHeight.text = height.toString()
             }
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStartTrackingTouch(sb: SeekBar?) {}
+            override fun onStopTrackingTouch(sb: SeekBar?) {}
         })
 
         // Weight
         binding.btnWeightPlus.setOnClickListener {
-            weight++
-            animateText(binding.tvWeight, weight)
-            updateMinusState()
+            if (weight < 300) {
+                weight++
+                binding.tvWeight.text = weight.toString()
+            }
         }
-
         binding.btnWeightMinus.setOnClickListener {
             if (weight > 1) {
                 weight--
-                animateText(binding.tvWeight, weight)
-                updateMinusState()
+                binding.tvWeight.text = weight.toString()
             }
         }
 
         // Age
         binding.btnAgePlus.setOnClickListener {
-            age++
-            animateText(binding.tvAge, age)
-            updateMinusState()
+            if (age < 120) {
+                age++
+                binding.tvAge.text = age.toString()
+            }
         }
-
         binding.btnAgeMinus.setOnClickListener {
             if (age > 1) {
                 age--
-                animateText(binding.tvAge, age)
-                updateMinusState()
+                binding.tvAge.text = age.toString()
             }
         }
 
@@ -68,26 +74,32 @@ class MainActivity : AppCompatActivity() {
         binding.btnCalculate.setOnClickListener {
             val bmi = BmiUtils.calculateBMI(weight, height)
             val category = BmiUtils.getCategory(bmi)
-            val desc = BmiUtils.getDescription(category)
+            val desc = BmiUtils.getDescription(category, gender)
+
+            prefs.edit()
+                .putFloat("LAST_BMI", bmi.toFloat())
+                .putString("LAST_CATEGORY", category)
+                .apply()
 
             val intent = Intent(this, ResultActivity::class.java)
             intent.putExtra("BMI", bmi)
             intent.putExtra("CATEGORY", category)
             intent.putExtra("DESC", desc)
+            intent.putExtra("GENDER", gender)
+            intent.putExtra("HEIGHT", height)
             startActivity(intent)
         }
     }
 
-    // Disable minus when minimum reached
-    private fun updateMinusState() {
-        binding.btnWeightMinus.isEnabled = weight > 1
-        binding.btnAgeMinus.isEnabled = age > 1
+    private fun selectMale() {
+        gender = "MALE"
+        binding.cardMale.alpha = 1f
+        binding.cardFemale.alpha = 0.5f
     }
 
-    // Animate number change
-    private fun animateText(textView: android.widget.TextView, value: Int) {
-        textView.text = value.toString()
-        ObjectAnimator.ofFloat(textView, "scaleX", 0.8f, 1f).setDuration(150).start()
-        ObjectAnimator.ofFloat(textView, "scaleY", 0.8f, 1f).setDuration(150).start()
+    private fun selectFemale() {
+        gender = "FEMALE"
+        binding.cardFemale.alpha = 1f
+        binding.cardMale.alpha = 0.5f
     }
 }
