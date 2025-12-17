@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <!-- Brand -->
+    <color name="colorPrimary">#4E5AE8</color>
+    <color name="colorPrimaryDark">#3949AB</color>
+    <color name="colorAccent">#FF5252</color>
+
+    <!-- Backgrounds -->
+    <color name="bg_light">#FFFFFF</color>
+    <color name="card_bg_light">#F5F5F5</color>
+
+    <!-- Text -->
+    <color name="text_primary_light">#212121</color>
+    <color name="text_secondary_light">#757575</color>
+
+    <!-- BMI Category -->
+    <color name="bmi_underweight">#FFC107</color>
+    <color name="bmi_normal">#4CAF50</color>
+    <color name="bmi_overweight">#FF9800</color>
+    <color name="bmi_obese">#F44336</color>
+
 </resources>

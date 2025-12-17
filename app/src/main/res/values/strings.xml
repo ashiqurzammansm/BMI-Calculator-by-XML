@@ -1,3 +1,49 @@
 <resources>
+
+    <!-- App -->
     <string name="app_name">BMI Calculator</string>
+    <string name="app_title">BMI Calculator</string>
+
+    <!-- Gender -->
+    <string name="male">MALE</string>
+    <string name="female">FEMALE</string>
+
+    <!-- Inputs -->
+    <string name="height_cm">HEIGHT (cm)</string>
+    <string name="weight">WEIGHT</string>
+    <string name="age">AGE</string>
+
+    <!-- Buttons -->
+    <string name="calculate">CALCULATE</string>
+    <string name="recalculate">RE-CALCULATE</string>
+    <string name="share_result">SHARE RESULT</string>
+    <string name="view_history">View History</string>
+
+    <!-- Result -->
+    <string name="your_result">Your Result</string>
+    <string name="ideal_weight_range">Ideal weight range:</string>
+
+    <!-- BMI Categories -->
+    <string name="underweight">UNDERWEIGHT</string>
+    <string name="normal">NORMAL</string>
+    <string name="overweight">OVERWEIGHT</string>
+    <string name="obese">OBESE</string>
+
+    <!-- Descriptions -->
+    <string name="desc_underweight">
+        You are underweight. Consider nutritious meals.
+    </string>
+
+    <string name="desc_normal">
+        You have a healthy body weight. Keep it up!
+    </string>
+
+    <string name="desc_overweight">
+        You are slightly overweight. Regular exercise is recommended.
+    </string>
+
+    <string name="desc_obese">
+        You are obese. Please consult a healthcare professional.
+    </string>
+
 </resources>

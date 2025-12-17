@@ -1,0 +1,43 @@
+<resources>
+
+    <string name="app_name">Calculadora IMC</string>
+    <string name="app_title">Calculadora IMC</string>
+
+    <string name="male">HOMBRE</string>
+    <string name="female">MUJER</string>
+
+    <string name="height_cm">ALTURA (cm)</string>
+    <string name="weight">PESO</string>
+    <string name="age">EDAD</string>
+
+    <string name="calculate">CALCULAR</string>
+    <string name="recalculate">RECALCULAR</string>
+    <string name="share_result">COMPARTIR RESULTADO</string>
+    <string name="view_history">Ver historial</string>
+
+
+    <string name="your_result">Tu Resultado</string>
+    <string name="ideal_weight_range">Rango de peso ideal:</string>
+
+    <string name="underweight">BAJO PESO</string>
+    <string name="normal">NORMAL</string>
+    <string name="overweight">SOBREPESO</string>
+    <string name="obese">OBESIDAD</string>
+
+    <string name="desc_underweight">
+        Tienes bajo peso. Considera una dieta nutritiva.
+    </string>
+
+    <string name="desc_normal">
+        Tienes un peso saludable. ¡Buen trabajo!
+    </string>
+
+    <string name="desc_overweight">
+        Tienes sobrepeso. Se recomienda ejercicio regular.
+    </string>
+
+    <string name="desc_obese">
+        Tienes obesidad. Consulta a un profesional de salud.
+    </string>
+
+</resources>

@@ -1,4 +1,4 @@
-package com.example.bmicalculator
+package com.example.bmicalculator.util
 
 object BmiUtils {
 
